@@ -62,18 +62,19 @@
             document.body.appendChild(renderer.domElement);
         }
 
-        function createPlane() {
-            var planeGeometry = new THREE.CubeGeometry(1000, 1000, 1, 1);
-            var planeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+        function createPlane() { 
+            var planeGeometry = new THREE.PlaneGeometry(100, 20, 1, 1); 
+            var planeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 }); 
             var plane = new THREE.Mesh(planeGeometry, planeMaterial);
-            plane.rotation.x = -0.5 * Math.PI;
-            scene.add(plane);
+            plane.position.set(0,-5,0); 
+            plane.rotation.x = -0.5 * Math.PI; scene.add(plane); 
         }
+        
         function init() {
             //create scene
             createCamera();
             scene = new THREE.Scene();
-            scene.fog = new THREE.Fog (0xffffff, 0.002);
+            scene.fog = new THREE.Fog(0xffffff, 10, 100);
             createPlane();
             createStats();
 
